@@ -16,7 +16,7 @@ public class CinemaController {
     private CinemaService  cinemaService;
 
     @GetMapping
-    public ResponseEntity<Page<Cinema>> findAllCinemas(@RequestParam int page, @RequestParam int size) {
+    public ResponseEntity<Page<Cinema>> findAllCinemas(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size) {
         return ResponseEntity.ok(cinemaService.findAllCinemas(page,size,Sort.by("id").ascending()));
     }
 

@@ -15,7 +15,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     @GetMapping
-    public ResponseEntity<Page<UserResponse>> getUserList(@RequestParam int page,@RequestParam int size) {
+    public ResponseEntity<Page<UserResponse>> getUserList(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int size) {
         return ResponseEntity.ok(userService.userList(page,size, Sort.by("username").descending()));
     }
     @PostMapping
